@@ -49,12 +49,9 @@ int serialCom_TxData(int *receiveBatTemp, int *receiveSocData)
 int GenerateSensorData_Tx(int *BatteryTemp, int *BatterySoc)
 {
   int ComStatus;
-  int Temp_datalength = sizeof(BatteryTemp)/sizeof(BatteryTemp[0]);
-  int Soc_datalength = sizeof(BatterySoc)/sizeof(BatterySoc[0]);
-	
-    
-  Generate_TempSensorData(BatteryTemp, Temp_datalength);
-  Generate_SOCData(BatterySoc, Soc_datalength);
+
+  Generate_TempSensorData(BatteryTemp, MAX_DATA);
+  Generate_SOCData(BatterySoc, MAX_DATA);
   
   ComStatus = settingPipeforDataTransition(Temp_fileDirectory, SOC_fileDirectory);
   
