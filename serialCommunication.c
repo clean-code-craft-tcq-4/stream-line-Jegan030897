@@ -56,11 +56,11 @@ int GenerateSensorData_Tx(int *BatteryTemp, int *BatterySoc, int tempDataLen, in
   Generate_TempSensorData(BatteryTemp, tempDataLen);
   Generate_SOCData(BatterySoc, socDataLen);
   
-  ComStatus = settingPipeforDataTransition(Temp_fileDirectory, SOC_fileDirectory, tempDataLen, socDataLen);
+  ComStatus = settingPipeforDataTransition(Temp_fileDirectory, SOC_fileDirectory);
   
   if(ComStatus == TRUE)
   {
-    Tx_Ack = serialCom_TxData(BatteryTemp, BatterySoc);
+    Tx_Ack = serialCom_TxData(BatteryTemp, BatterySoc, tempDataLen, socDataLen);
   }
   return Tx_Ack;
 }
