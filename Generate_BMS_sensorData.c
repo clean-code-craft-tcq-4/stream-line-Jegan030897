@@ -25,3 +25,9 @@ void Generate_SOCData(int Datasize)
 		}
   } 
 }
+
+int main()
+{
+	Generate_TempSensorData(MAX_DATA);
+	Generate_SOCData(MAX_DATA);
+}
