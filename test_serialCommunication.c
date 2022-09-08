@@ -24,8 +24,15 @@ void TestCase_Setting_PipeFor_TxData()
   assert(settingPipeforDataTransition(Temp_fileDirectory, SOC_fileDirectory) == Tx_ESTABLISHED);
 }
 
+void TestCase_SerialCom_TxData();
+{
+  int tempData[5] = {4,3,2,1,4}, socData[5] = {1,7,5,8,9};
+  assert((serialCom_TxData(tempData, socData, 5, 5) == ACK);
+}
+
 int main()
 {
   TestCase_GenerateSensorData();
   TestCase_Setting_PipeFor_TxData();
+  TestCase_SerialCom_TxData();
 }
