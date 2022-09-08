@@ -20,13 +20,16 @@ int settingPipeforDataTransition(int *tempFD, int *socFD)
 	return TRUE;
 }
 
-int serialCom_TxData(int *receiveBatTemp, int *receiveSocData)
+int serialCom_TxData(int *receiveBatTemp, int *receiveSocData, int tempDataLength, int socDataLength)
 {
-	int tempData[MAX_DATA], socData[MAX_DATA];
+	int tempData[tempDataLength], socData[socDataLength];
 	
-	for(int index = 0; index < MAX_DATA; index++)
+	for(int index = 0; index < tempDataLength; index++)
 	{
 	    tempData[index] = *(receiveBatTemp+index);
+	}
+	for(int index = 0; index < socDataLength; index++)
+	{
 	    socData[index] = *(receiveSocData+index);
 	}
 	
@@ -46,14 +49,14 @@ int serialCom_TxData(int *receiveBatTemp, int *receiveSocData)
 	return NOT_ACK;
 }
 
-int GenerateSensorData_Tx(int *BatteryTemp, int *BatterySoc)
+int GenerateSensorData_Tx(int *BatteryTemp, int *BatterySoc, int tempDataLen, int socDataLen)
 {
   int ComStatus, Tx_Ack;
 
-  Generate_TempSensorData(BatteryTemp, MAX_DATA);
-  Generate_SOCData(BatterySoc, MAX_DATA);
+  Generate_TempSensorData(BatteryTemp, tempDataLen);
+  Generate_SOCData(BatterySoc, socDataLen);
   
-  ComStatus = settingPipeforDataTransition(Temp_fileDirectory, SOC_fileDirectory);
+  ComStatus = settingPipeforDataTransition(Temp_fileDirectory, SOC_fileDirectory, tempDataLen, socDataLen);
   
   if(ComStatus == TRUE)
   {
