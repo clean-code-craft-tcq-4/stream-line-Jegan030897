@@ -42,7 +42,7 @@ extern int id;
 void Generate_TempSensorData(int *batTemp, int Datasize);
 void Generate_SOCData(int *socData, int Datasize);
 int settingPipeforDataTransition(int *tempFD, int *socFD);
-int serialCom_TxData(int *receiveBatTemp, int *receiveSocData);
-int GenerateSensorData_Tx(int *BatteryTemp, int *BatterySoc);
+int serialCom_TxData(int *receiveBatTemp, int *receiveSocData, int tempDataLength, int socDataLength);
+int GenerateSensorData_Tx(int *BatteryTemp, int *BatterySoc, int tempDataLen, int socDataLen);
 
 
