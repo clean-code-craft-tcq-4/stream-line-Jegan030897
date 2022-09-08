@@ -29,8 +29,6 @@ typedef enum
   BATTERY_SOC            = 1
 }Parameter;
 
-Parameter BatteryParameter; 
-
 extern int BatteryTemp[MAX_DATA];
 extern int BatterySoc[MAX_DATA];
 
