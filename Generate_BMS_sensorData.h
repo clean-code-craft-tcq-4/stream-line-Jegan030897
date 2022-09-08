@@ -31,12 +31,12 @@ typedef enum
 
 Parameter BatteryParameter; 
 
-int BatteryTemp[MAX_DATA];
-int BatterySoc[MAX_DATA];
+extern int BatteryTemp[MAX_DATA];
+extern int BatterySoc[MAX_DATA];
 
-int Temp_fileDirectory[2]; 
-int SOC_fileDirectory[2]; 
-int id;
+extern int Temp_fileDirectory[2]; 
+extern int SOC_fileDirectory[2]; 
+extern int id;
 
 void Generate_TempSensorData(int *batTemp, int Datasize);
 void Generate_SOCData(int *socData, int Datasize);
