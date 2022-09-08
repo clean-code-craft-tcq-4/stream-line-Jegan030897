@@ -10,7 +10,7 @@ void TestCase_GenerateSensorData()
   Generate_TempSensorData(tempData, 5);
   Generate_SOCData(socData, 5);
   
-  for(index = 0; index < 5; index++)
+  for(int index = 0; index < 5; index++)
   {
     assert(tempData[index] != 0);
     assert(socData[index] != 0);
