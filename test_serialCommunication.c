@@ -17,7 +17,15 @@ void TestCase_GenerateSensorData()
   }
 }
 
+void TestCase_Setting_PipeFor_TxData()
+{
+  int Temp_fileDirectory[2], SOC_fileDirectory[2]; 
+  
+  assert(settingPipeforDataTransition(Temp_fileDirectory, SOC_fileDirectory) == Tx_ESTABLISHED);
+}
+
 int main()
 {
   TestCase_GenerateSensorData();
+  TestCase_Setting_PipeFor_TxData();
 }
