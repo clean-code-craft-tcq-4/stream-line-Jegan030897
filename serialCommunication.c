@@ -1,5 +1,11 @@
 #include "Generate_BMS_sensorData.h"
 
+int BatteryTemp[MAX_DATA];
+int BatterySoc[MAX_DATA];
+
+int Temp_fileDirectory[2]; 
+int SOC_fileDirectory[2]; 
+int id;
 
 int settingPipeforDataTransition()
 {
