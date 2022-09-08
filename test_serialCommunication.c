@@ -25,7 +25,7 @@ void TestCase_Setting_PipeFor_TxData()
 
 void TestCase_SerialCom_TxData()
 {
-  assert((serialCom_TxData(tempData, socData, 5, 5) == ACK);
+  assert(serialCom_TxData(tempData, socData, 5, 5) == ACK);
 }
 
 int main()
