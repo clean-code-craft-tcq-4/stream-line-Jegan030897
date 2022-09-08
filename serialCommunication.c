@@ -9,11 +9,11 @@ int id;
 
 Parameter BatteryParameter; 
 
-int settingPipeforDataTransition()
+int settingPipeforDataTransition(int *tempFD, int *socFD)
 {
 	id = fork();
 	
-	if((pipe(Temp_fileDirectory) == -1) && (pipe(SOC_fileDirectory) == -1)) {
+	if((pipe(tempFD) == -1) && (pipe(socFD) == -1)) {
 		printf("an error occured with opening the pipe \n");
 		return FALSE;
 	}
