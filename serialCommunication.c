@@ -1,20 +1,14 @@
 #include "Generate_BMS_sensorData.h"
 
 
-int settingPipeforDataTransition(BatteryParameter sensorID)
+int settingPipeforDataTransition()
 {
 	id = fork();
 	
-	if((pipe(Temp_fileDirectory) == -1) && (sensorID == BATTERY_TEMPERATURE)) {
+	if((pipe(Temp_fileDirectory) == -1) && (pipe(SOC_fileDirectory) == -1)) {
 		printf("an error occured with opening the pipe \n");
 		return FALSE;
 	}
-	
-	if((pipe(SOC_fileDirectory) == -1) && (sensorID == BATTERY_SOC)) {
-		printf("an error occured with opening the pipe \n");
-    return FALSE;
-	}
-	
 	return TRUE;
 }
 
@@ -46,10 +40,10 @@ int main()
   int tempComStatus, socComStatus;
     
   Generate_TempSensorData(BatteryTemp, MAX_DATA);
-	Generate_SOCData(BatterySoc, MAX_DATA);
+  Generate_SOCData(BatterySoc, MAX_DATA);
   
-  tempComStatus = settingPipeforDataTransition(BATTERY_TEMPERATURE);
-  socComStatus = settingPipeforDataTransition(BATTERY_SOC);
+  tempComStatus = settingPipeforDataTransition();
+  socComStatus = settingPipeforDataTransition();
   
   if((tempComStatus == TRUE) && (socComStatus == TRUE))
   {
