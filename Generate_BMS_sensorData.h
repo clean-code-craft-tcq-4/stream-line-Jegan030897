@@ -17,6 +17,9 @@
 #define TRUE            1
 #define FALSE           0
 
+#define ACK             1
+#define NOT_ACK         0
+
 typedef enum 
 {
   FILE_READ    = 0,
