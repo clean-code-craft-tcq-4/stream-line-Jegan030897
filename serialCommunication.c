@@ -48,7 +48,7 @@ int serialCom_TxData(int *receiveBatTemp, int *receiveSocData)
 
 int GenerateSensorData_Tx(int *BatteryTemp, int *BatterySoc)
 {
-  int ComStatus;
+  int ComStatus, Tx_Ack;
 
   Generate_TempSensorData(BatteryTemp, MAX_DATA);
   Generate_SOCData(BatterySoc, MAX_DATA);
@@ -57,6 +57,7 @@ int GenerateSensorData_Tx(int *BatteryTemp, int *BatterySoc)
   
   if(ComStatus == TRUE)
   {
-    serialCom_TxData(BatteryTemp, BatterySoc);
+    Tx_Ack = serialCom_TxData(BatteryTemp, BatterySoc);
   }
+  return Tx_Ack;
 }
