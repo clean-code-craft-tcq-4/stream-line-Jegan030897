@@ -1,7 +1,7 @@
 #include "Generate_BMS_sensorData.h"
 
-int BatteryTemp[MAX_DATA];
-int BatterySoc[MAX_DATA];
+//int BatteryTemp[MAX_DATA];
+//int BatterySoc[MAX_DATA];
 
 int Temp_fileDirectory[2]; 
 int SOC_fileDirectory[2]; 
@@ -46,7 +46,7 @@ int serialCom_TxData(int *receiveBatTemp, int *receiveSocData)
 	return NOT_ACK;
 }
 
-int main()
+int GenerateSensorData_Tx(int *BatteryTemp, int *BatterySoc)
 {
   int ComStatus;
   int Temp_datalength = sizeof(BatteryTemp)/sizeof(BatteryTemp[0]);
