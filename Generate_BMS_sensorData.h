@@ -40,4 +40,7 @@ int id;
 
 void Generate_TempSensorData(int *batTemp, int Datasize);
 void Generate_SOCData(int *socData, int Datasize);
+int settingPipeforDataTransition();
+void serialCom_TxData();
+
 
