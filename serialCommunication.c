@@ -15,9 +15,10 @@ int settingPipeforDataTransition(int *tempFD, int *socFD)
 	
 	if((pipe(tempFD) == -1) && (pipe(socFD) == -1)) {
 		printf("an error occured with opening the pipe \n");
-		return FALSE;
+		
+		return Tx_NOT_ESTABLISHED;
 	}
-	return TRUE;
+	return Tx_ESTABLISHED;
 }
 
 int serialCom_TxData(int *receiveBatTemp, int *receiveSocData, int tempDataLength, int socDataLength)
