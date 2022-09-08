@@ -45,15 +45,14 @@ void serialCom_TxData()
 
 int main()
 {
-  int tempComStatus, socComStatus;
+  int ComStatus;
     
   Generate_TempSensorData(BatteryTemp, MAX_DATA);
   Generate_SOCData(BatterySoc, MAX_DATA);
   
-  tempComStatus = settingPipeforDataTransition();
-  socComStatus = settingPipeforDataTransition();
+  ComStatus = settingPipeforDataTransition(Temp_fileDirectory, SOC_fileDirectory);
   
-  if((tempComStatus == TRUE) && (socComStatus == TRUE))
+  if(ComStatus == TRUE)
   {
     serialCom_TxData();
   }
