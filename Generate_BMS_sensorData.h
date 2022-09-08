@@ -38,7 +38,7 @@ extern int id;
 
 void Generate_TempSensorData(int *batTemp, int Datasize);
 void Generate_SOCData(int *socData, int Datasize);
-int settingPipeforDataTransition();
+int settingPipeforDataTransition(int *tempFD, int *socFD);
 void serialCom_TxData();
 
 
