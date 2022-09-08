@@ -7,6 +7,8 @@ int Temp_fileDirectory[2];
 int SOC_fileDirectory[2]; 
 int id;
 
+Parameter BatteryParameter; 
+
 int settingPipeforDataTransition()
 {
 	id = fork();
