@@ -32,8 +32,8 @@ typedef enum
   BATTERY_SOC            = 1
 }Parameter;
 
-extern int BatteryTemp[MAX_DATA];
-extern int BatterySoc[MAX_DATA];
+//extern int BatteryTemp[MAX_DATA];
+//extern int BatterySoc[MAX_DATA];
 
 extern int Temp_fileDirectory[2]; 
 extern int SOC_fileDirectory[2]; 
@@ -43,5 +43,6 @@ void Generate_TempSensorData(int *batTemp, int Datasize);
 void Generate_SOCData(int *socData, int Datasize);
 int settingPipeforDataTransition(int *tempFD, int *socFD);
 int serialCom_TxData(int *receiveBatTemp, int *receiveSocData);
+int GenerateSensorData_Tx(int *BatteryTemp, int *BatterySoc);
 
 
