@@ -20,7 +20,7 @@ int settingPipeforDataTransition(int *tempFD, int *socFD)
 	return TRUE;
 }
 
-void serialCom_TxData()
+int serialCom_TxData()
 {
 	int tempData[MAX_DATA], socData[MAX_DATA];
 	
@@ -30,7 +30,7 @@ void serialCom_TxData()
 	    socData[index] = BatterySoc[index];
 	}
 	
-	if(id == 0)
+	if(id == FALSE)
 	{
 		  close(Temp_fileDirectory[FILE_READ]);
 		  close(SOC_fileDirectory[FILE_READ]);
@@ -40,7 +40,10 @@ void serialCom_TxData()
 		
 		  close(Temp_fileDirectory[FILE_WRITE]);
 		  close(SOC_fileDirectory[FILE_WRITE]);
+		
+		  return ACK;
 	}
+	return NOT_ACK;
 }
 
 int main()
