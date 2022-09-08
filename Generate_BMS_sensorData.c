@@ -2,7 +2,7 @@
 #include "stdlib.h"
 #include "Generate_BMS_sensorData.h"
 
-int Generate_TempSensorData(int Datasize)
+void Generate_TempSensorData(int Datasize)
 {
   for(int index = 0; index < Datasize; index++)
   {
@@ -14,7 +14,7 @@ int Generate_TempSensorData(int Datasize)
   }
 }
 
-int Generate_SOCData(int Datasize)
+void Generate_SOCData(int Datasize)
 {
   for(int index = 0; index < Datasize; index++)
   {
