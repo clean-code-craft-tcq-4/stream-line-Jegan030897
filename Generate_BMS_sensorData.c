@@ -26,8 +26,3 @@ void Generate_SOCData(int *socData, int Datasize)
   } 
 }
 
-int main()
-{
-	Generate_TempSensorData(BatteryTemp, MAX_DATA);
-	Generate_SOCData(Soc, MAX_DATA);
-}
