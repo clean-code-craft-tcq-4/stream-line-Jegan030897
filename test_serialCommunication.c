@@ -2,11 +2,10 @@
 #include <assert.h>
 #include "Generate_BMS_sensorData.h"
 
+int tempData[5] = {0xFF,0xFF,0xFF,0xFF,0xFF}, socData[5] = {0xFF,0xFF,0xFF,0xFF,0xFF};
 
 void TestCase_GenerateSensorData()
 {
-  int tempData[5] = {0xFF,0xFF,0xFF,0xFF,0xFF}, socData[5] = {0xFF,0xFF,0xFF,0xFF,0xFF};
-  
   Generate_TempSensorData(tempData, 5);
   Generate_SOCData(socData, 5);
   
@@ -26,7 +25,6 @@ void TestCase_Setting_PipeFor_TxData()
 
 void TestCase_SerialCom_TxData()
 {
-  int tempData[5] = {4,3,2,1,4}, socData[5] = {1,7,5,8,9};
   assert((serialCom_TxData(tempData, socData, 5, 5) == ACK);
 }
 
