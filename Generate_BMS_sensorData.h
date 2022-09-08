@@ -20,6 +20,9 @@
 #define ACK             1
 #define NOT_ACK         0
 
+#define Tx_ESTABLISHED      1
+#define Tx_NOT_ESTABLISHED  0
+
 typedef enum 
 {
   FILE_READ    = 0,
