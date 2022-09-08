@@ -22,7 +22,7 @@ int settingPipeforDataTransition(int *tempFD, int *socFD)
 
 int serialCom_TxData(int *receiveBatTemp, int *receiveSocData)
 {
-	int tempData[receiveTempDataLen], socData[MAX_DATA];
+	int tempData[MAX_DATA], socData[MAX_DATA];
 	
 	for(int index = 0; index < MAX_DATA; index++)
 	{
