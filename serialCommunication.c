@@ -44,10 +44,8 @@ int serialCom_TxData(int *receiveBatTemp, int *receiveSocData, int tempDataLengt
 		
 		  close(Temp_fileDirectory[FILE_WRITE]);
 		  close(SOC_fileDirectory[FILE_WRITE]);
-		
-		  return ACK;
 	}
-	return NOT_ACK;
+	return ACK;
 }
 
 int GenerateSensorData_Tx(int *BatteryTemp, int *BatterySoc, int tempDataLen, int socDataLen)
