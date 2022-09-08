@@ -12,4 +12,5 @@ int BatteryTemp[MAX_DATA];
 int Soc[MAX_DATA];
 
 void Generate_TempSensorData(int *batTemp, int Datasize);
-void Generate_SOCData(int *socData, int Datasize)
+void Generate_SOCData(int *socData, int Datasize);
+
