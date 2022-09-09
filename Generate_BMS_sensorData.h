@@ -51,5 +51,7 @@ void Generate_SOCData(int *socData, int Datasize);
 int settingPipeforDataTransition(int *tempFD, int *socFD);
 int serialCommunication(int *receiveBatTemp, int *receiveSocData);
 int GenerateSensorData_Tx(int *BatteryTemp, int *BatterySoc, int tempDataLen, int socDataLen);
+void serialCom_TxData(int dataArray[]);
+void serialCom_RxData();
 
 
