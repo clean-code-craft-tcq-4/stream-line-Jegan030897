@@ -28,8 +28,8 @@ int serialCommunication(int *receiveBatTemp, int *receiveSocData)
 	char dataArray[MAXNOOFBMSDATA];
 	
 	memset(dataArray, '\0', MAXNOOFBMSDATA);
-    	for (int dataIndex = 0; dataIndex < NUMOFREADINGS; dataIndex++) {
-            char tempArray[NUMOFREADINGS];
+    	for (int dataIndex = 0; dataIndex < MAX_DATA; dataIndex++) {
+            char tempArray[MAX_DATA];
             temp1[dataIndex] = *(receiveBatTemp + dataIndex);
             temp2[dataIndex] = *(receiveSocData + dataIndex);
             memset(tempArray, '\0', sizeof(tempArray));
@@ -49,15 +49,15 @@ int serialCommunication(int *receiveBatTemp, int *receiveSocData)
 	}
 	else
 	{
-	    char arrw[MAXNOOFBMSDATA], arr2[5];
-	    memset(arrw, '\0', sizeof(arrw));
+	    char receiveData[MAXNOOFBMSDATA], arr2[5];
+	    memset(receiveData, '\0', sizeof(arrw));
 	    close(Temp_fileDirectory[1]);
 		
-	    read(Temp_fileDirectory[0], arrw, MAXNOOFBMSDATA);
+	    read(Temp_fileDirectory[0], receiveData, MAXNOOFBMSDATA);
 		
 	    close(Temp_fileDirectory[0]);
 		
-            printf("Receive Data: %s\n",arrw);
+            printf("Receive Data: %s\n",receiveData);
 	}
 	return ACK;
 }
