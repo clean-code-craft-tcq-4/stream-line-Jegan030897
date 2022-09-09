@@ -50,7 +50,7 @@ int serialCommunication(int *receiveBatTemp, int *receiveSocData)
 	return NOT_ACK;
 }
 
-void serialCom_TxData(int dataArray[])
+void serialCom_TxData(char dataArray[])
 {
 	close(Temp_fileDirectory[0]);
 		
