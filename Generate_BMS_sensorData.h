@@ -14,6 +14,10 @@
 #define MIN_SOC		      20
 #define MAX_SOC		      80
 
+#define MAX_SENSORCNT   2
+#define BMSDATA         8
+#define MAXNOOFBMSDATA  (MAX_SENSORCNT * MAX_DATA * BMSDATA)
+
 #define TRUE            1
 #define FALSE           0
 
