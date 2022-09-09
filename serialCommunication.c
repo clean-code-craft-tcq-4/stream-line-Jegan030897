@@ -23,7 +23,6 @@ int settingPipeforDataTransition(int *tempFD, int *socFD)
 
 int serialCommunication(int *receiveBatTemp, int *receiveSocData)
 {
-    id = fork();
 	int temp1[MAXNOOFBMSDATA], temp2[MAXNOOFBMSDATA];
 	char dataArray[MAXNOOFBMSDATA];
 	
