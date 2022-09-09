@@ -49,8 +49,8 @@ int serialCommunication(int *receiveBatTemp, int *receiveSocData)
 	}
 	else
 	{
-	    char receiveData[MAXNOOFBMSDATA], arr2[5];
-	    memset(receiveData, '\0', sizeof(arrw));
+	    char receiveData[MAXNOOFBMSDATA];
+	    memset(receiveData, '\0', sizeof(receiveData));
 	    close(Temp_fileDirectory[1]);
 		
 	    read(Temp_fileDirectory[0], receiveData, MAXNOOFBMSDATA);
