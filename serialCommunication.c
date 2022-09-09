@@ -39,35 +39,26 @@ int serialCommunication(int *receiveBatTemp, int *receiveSocData)
         
 	if(id > FALSE)
 	{
-		serialCom_TxData(dataArray);
+		close(Temp_fileDirectory[0]);
+		
+		write(Temp_fileDirectory[1], dataArray, strlen(dataArray));
+		
+		close(Temp_fileDirectory[1]);
 		return ACK;
 	}
 	else
 	{
-	   	serialCom_RxData();
+	   	char receiveData[MAXNOOFBMSDATA];
+		memset(receiveData, '\0', sizeof(receiveData));
+		
+		close(Temp_fileDirectory[1]);
+		
+		read(Temp_fileDirectory[0], receiveData, MAXNOOFBMSDATA);
+		
+		close(Temp_fileDirectory[0]);
 		return ACK;
 	}
 	return NOT_ACK;
-}
-
-void serialCom_TxData(char dataArray[])
-{
-	close(Temp_fileDirectory[0]);
-		
-	write(Temp_fileDirectory[1], dataArray, strlen(dataArray));
-		
-	close(Temp_fileDirectory[1]);
-}
-
-void serialCom_RxData()
-{
-	char receiveData[MAXNOOFBMSDATA];
-	memset(receiveData, '\0', sizeof(receiveData));
-	close(Temp_fileDirectory[1]);
-		
-	read(Temp_fileDirectory[0], receiveData, MAXNOOFBMSDATA);
-		
-	close(Temp_fileDirectory[0]);
 }
 
 int GenerateSensorData_Tx(int *BatteryTemp, int *BatterySoc, int tempDataLen, int socDataLen)
