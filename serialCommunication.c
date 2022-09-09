@@ -21,29 +21,43 @@ int settingPipeforDataTransition(int *tempFD, int *socFD)
 	return Tx_ESTABLISHED;
 }
 
-int serialCom_TxData(int *receiveBatTemp, int *receiveSocData, int tempDataLength, int socDataLength)
+int serialCommunication(int *receiveBatTemp, int *receiveSocData)
 {
-	int tempData[tempDataLength], socData[socDataLength];
+    id = fork();
+	int temp1[MAXNOOFBMSDATA], temp2[MAXNOOFBMSDATA];
+	char dataArray[MAXNOOFBMSDATA];
 	
-	for(int index = 0; index < tempDataLength; index++)
+	memset(dataArray, '\0', MAXNOOFBMSDATA);
+    	for (int dataIndex = 0; dataIndex < NUMOFREADINGS; dataIndex++) {
+            char tempArray[NUMOFREADINGS];
+            temp1[dataIndex] = *(receiveBatTemp + dataIndex);
+            temp2[dataIndex] = *(receiveSocData + dataIndex);
+            memset(tempArray, '\0', sizeof(tempArray));
+            sprintf(tempArray, "%d %d\n", temp1[dataIndex], temp2[dataIndex]);
+            strcat(dataArray, tempArray);
+        }
+        
+	if(id > FALSE)
 	{
-	    tempData[index] = *(receiveBatTemp+index);
-	}
-	for(int index = 0; index < socDataLength; index++)
-	{
-	    socData[index] = *(receiveSocData+index);
-	}
-	
-	if(id == FALSE)
-	{
-		  close(Temp_fileDirectory[FILE_READ]);
-		  close(SOC_fileDirectory[FILE_READ]);
+		  close(Temp_fileDirectory[0]);
 		
-		  write(Temp_fileDirectory[FILE_WRITE], tempData, MAX_DATA);
-		  write(SOC_fileDirectory[FILE_WRITE], socData, MAX_DATA);
+		  write(Temp_fileDirectory[1], dataArray, strlen(dataArray));
 		
-		  close(Temp_fileDirectory[FILE_WRITE]);
-		  close(SOC_fileDirectory[FILE_WRITE]);
+		  close(Temp_fileDirectory[1]);
+		  printf("sender: %s", dataArray);
+
+	}
+	else
+	{
+	    char arrw[MAXNOOFBMSDATA], arr2[5];
+	    memset(arrw, '\0', sizeof(arrw));
+	    close(Temp_fileDirectory[1]);
+		
+	    read(Temp_fileDirectory[0], arrw, MAXNOOFBMSDATA);
+		
+	    close(Temp_fileDirectory[0]);
+		
+            printf("Receive Data: %s\n",arrw);
 	}
 	return ACK;
 }
@@ -59,7 +73,7 @@ int GenerateSensorData_Tx(int *BatteryTemp, int *BatterySoc, int tempDataLen, in
   
   if(ComStatus == TRUE)
   {
-    Tx_Ack = serialCom_TxData(BatteryTemp, BatterySoc, tempDataLen, socDataLen);
+    Tx_Ack = serialCom_TxData(BatteryTemp, BatterySoc);
   }
   return Tx_Ack;
 }
