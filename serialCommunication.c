@@ -11,7 +11,6 @@ Parameter BatteryParameter;
 
 int settingPipeforDataTransition(int *tempFD, int *socFD)
 {
-	id = fork();
 	
 	if((pipe(tempFD) == -1) && (pipe(socFD) == -1)) {
 		printf("an error occured with opening the pipe \n");
@@ -25,7 +24,7 @@ int serialCommunication(int *receiveBatTemp, int *receiveSocData)
 {
 	int temp1[MAXNOOFBMSDATA], temp2[MAXNOOFBMSDATA];
 	char dataArray[MAXNOOFBMSDATA];
-	
+	id = fork();
 	memset(dataArray, '\0', MAXNOOFBMSDATA);
     	for (int dataIndex = 0; dataIndex < MAX_DATA; dataIndex++) {
             char tempArray[MAX_DATA];
