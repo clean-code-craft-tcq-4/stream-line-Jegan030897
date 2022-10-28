@@ -1,5 +1,5 @@
 #include <assert.h>
-#include "Generate_BMS_Data.h"
+#include "./Generate_BMS_Data.h"
 #include "./Receiver/Rx_BMS_Data.h"
 #include "BMS_Statistics/BMS_Statistics.h"
 
