@@ -1,6 +1,6 @@
 #include <assert.h>
-#include "./Generate_BMS_sensorData.h"
-#include "./Receiver/reciver_BMS_Data.h"
+#include "Sender/Generate_BMS_Data.h"
+#include "Receiver/Rx_BMS_Data.h"
 #include "BMS_Statistics/BMS_Statistics.h"
 
 void Test_ReadMock_BMSdata();
